@@ -17,11 +17,13 @@ type MenuItem = Required<MenuProps>["items"][number];
 
 const { Title } = Typography;
 const { Header, Content } = Layout;
-interface MainProps {}
+interface MainProps {
+  userName: string;
+}
 
 const monthFormat = "MM/YYYY";
 
-function Main({}: MainProps) {
+function Main({ userName }: MainProps) {
   let navigate = useNavigate();
   const [cardNumber, setCardNumber] = useState<number | undefined>();
   const [expireDate, setExpireDate] = useState<string>("");
@@ -96,7 +98,7 @@ function Main({}: MainProps) {
       </Header>
       <Content className="content-container">
         <Title level={5} className="main-content-title">
-          Welcome {"Steven"}
+          Welcome {userName}
         </Title>
         <Form
           className="main-credit-card-form"

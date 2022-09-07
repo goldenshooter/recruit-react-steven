@@ -1,32 +1,41 @@
 import { Button, Input, Typography } from "antd";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const { Title } = Typography;
 
-interface LogInProps {}
+interface LogInProps {
+  userName: string;
+  setUserName: (userName: string) => void;
+}
 
-function LogIn({}: LogInProps) {
-  const [userName, setUserName] = useState<string | undefined>();
+function LogIn({ userName, setUserName }: LogInProps) {
+  let navigate = useNavigate();
   const [logInDisabled, setLogInDisabled] = useState<boolean>(true);
 
+  useEffect(() => {
+    setLogInDisabled(!Boolean(userName));
+  }, [userName]);
+
   const goToMainPage = () => {
-    console.log("jump to register credit card page");
+    if (userName) {
+      navigate("/main");
+    }
   };
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(e.target.value);
-    setLogInDisabled(!Boolean(e.target.value));
   };
 
   return (
     <div className="login-container">
       <Title className="asb-logo">ASB</Title>
       <Input
-        status={logInDisabled ? "warning" : ""}
-        value={userName}
         onChange={handleNameChange}
+        onPressEnter={() => goToMainPage()}
         placeholder="Name"
+        value={userName}
+        style={{ width: "150px" }}
       />
       <Button
         className="margin-top-20px"
@@ -34,7 +43,7 @@ function LogIn({}: LogInProps) {
         type="primary"
         onClick={goToMainPage}
       >
-        <Link to="/main">Log in</Link>
+        Log in
       </Button>
     </div>
   );
