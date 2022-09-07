@@ -12,6 +12,7 @@ import type { DatePickerProps, MenuProps } from "antd";
 import { BarsOutlined, LogoutOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { getNumber } from "./helperFunctions";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -38,14 +39,6 @@ function Main({ userName }: MainProps) {
 
   const onExpireDateChange: DatePickerProps["onChange"] = (_, dateString) => {
     setExpireDate(dateString);
-  };
-
-  const getNumber = (value: any) => {
-    if (isNaN(parseInt(value))) {
-      return undefined;
-    }
-
-    return parseInt(value);
   };
 
   const onCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
