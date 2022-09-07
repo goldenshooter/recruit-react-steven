@@ -10,15 +10,15 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="main" element={<Main userName={userName} />} />
-        <Route
-          path="login"
-          element={<LogIn userName={userName} setUserName={setUserName} />}
-        />
         <Route
           path="/"
           element={<LogIn userName={userName} setUserName={setUserName} />}
         />
+        <Route
+          path="login"
+          element={<LogIn userName={userName} setUserName={setUserName} />}
+        />
+        <Route path="main" element={<Main userName={userName} />} />
       </Routes>
     </div>
   );
