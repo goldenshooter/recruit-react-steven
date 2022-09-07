@@ -1,5 +1,6 @@
 import { Button, Input, Typography } from "antd";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const { Title } = Typography;
 
@@ -33,7 +34,7 @@ function LogIn({}: LogInProps) {
         type="primary"
         onClick={goToMainPage}
       >
-        Log in
+        <Link to="/main">Log in</Link>
       </Button>
     </div>
   );

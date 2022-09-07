@@ -8,8 +8,9 @@ import {
   Menu,
   Typography,
 } from "antd";
-import { BarsOutlined, LogoutOutlined } from "@ant-design/icons";
 import type { DatePickerProps, MenuProps } from "antd";
+import { BarsOutlined, LogoutOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -21,6 +22,7 @@ interface MainProps {}
 const monthFormat = "MM/YYYY";
 
 function Main({}: MainProps) {
+  let navigate = useNavigate();
   const [cardNumber, setCardNumber] = useState<number | undefined>();
   const [expireDate, setExpireDate] = useState<string>("");
   const [CVC, setCVC] = useState<number | undefined>();
@@ -58,9 +60,8 @@ function Main({}: MainProps) {
     console.log({ cardNumber, expireDate, CVC });
   };
 
-  const onMenuClick: MenuProps["onClick"] = (e) => {
-    console.log("click", e);
-    // jump to log in page.
+  const onMenuClick: MenuProps["onClick"] = () => {
+    navigate("/login");
   };
 
   const items: MenuItem[] = [
