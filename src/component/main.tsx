@@ -68,7 +68,7 @@ function Main({ userName }: MainProps) {
   ];
 
   return (
-    <div className="main-container">
+    <div className="main-container" data-testid="main-container">
       <Drawer
         title="Menu"
         placement="left"
@@ -106,6 +106,7 @@ function Main({ userName }: MainProps) {
             rules={[{ required: true, message: "Please input your username" }]}
           >
             <Input
+              data-testid="main-name-input"
               value={cardNumber}
               onChange={onCardNumberChange}
               placeholder="Card Number"

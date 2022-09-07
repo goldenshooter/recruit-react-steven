@@ -1,4 +1,4 @@
-import { getNumber } from "./helperFunctions";
+import { getNumber } from "../helperFunctions";
 
 const MOCK_DATA = [
   {

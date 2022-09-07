@@ -28,9 +28,12 @@ function LogIn({ userName, setUserName }: LogInProps) {
   };
 
   return (
-    <div className="login-container">
-      <Title className="asb-logo">ASB</Title>
+    <div data-testid="login-container" className="login-container">
+      <Title className="asb-logo" data-testid="login-asb-logo">
+        ASB
+      </Title>
       <Input
+        data-testid="login-name-input"
         onChange={handleNameChange}
         onPressEnter={() => goToMainPage()}
         placeholder="Name"
@@ -39,6 +42,7 @@ function LogIn({ userName, setUserName }: LogInProps) {
       />
       <Button
         className="margin-top-20px"
+        data-testid="login-save-button"
         disabled={logInDisabled}
         type="primary"
         onClick={goToMainPage}
